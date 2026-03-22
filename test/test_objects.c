@@ -72,22 +72,6 @@ void create_register_extra(){
     TEST_ASSERT_(registry->customers[1]->car == car2, "Car 2 is not in the registry");
 }
 
-void references(){
-    Car* car1 = car_create("AUDI", "TT", "TI007");
-    Customer* customer1 = customer_create("John Doe", "Some Street 123");
-
-    link_car(car1, customer1);
-
-    Customer** customers = (Customer*[]){customer1};
-
-    Registry* registry = registry_create(customers, 2);
-    TEST_ASSERT_(registry->customers[0] == customer1, "Customer 1 is not in the registry");
-    TEST_ASSERT_(registry->customers[1] == customer2, "Customer 2 is not in the registry");
-
-    TEST_ASSERT_(registry->customers[0]->car == car1, "Car 1 is not in the registry");
-    TEST_ASSERT_(registry->customers[1]->car == car2, "Car 2 is not in the registry");
-}
-
 TEST_LIST = {
     { "create_car", create_car },
     { "create_customer", create_customer },
